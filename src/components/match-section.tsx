@@ -55,14 +55,16 @@ function shuffleArray<T>(array: T[]): T[] {
 
 type Props = {
 	isRunning: boolean
+	timeLeft: number
 }
 
-export function MatchSection({ isRunning }: Props) {
+export function MatchSection({ isRunning, timeLeft }: Props) {
 	const [shuffledPacks, setShuffledPacks] = useState<Pack[]>([])
 	const [shuffledButtons, setShuffledButtons] = useState<Button[]>([])
 	const [activePackId, setActivePackId] = useState<number | null>(null)
 	const [mounted, setMounted] = useState(false)
 	const [matchedIds, setMatchedIds] = useState<number[]>([])
+	const [userWon, setUserWon] = useState(false)
 
 	useEffect(() => {
 		setShuffledPacks(shuffleArray(packs))
@@ -74,7 +76,15 @@ export function MatchSection({ isRunning }: Props) {
 		if (matchedIds.length === 3) {
 			console.log('game over')
 		}
-	}, [matchedIds])
+
+		if (timeLeft <= 0) {
+			if (matchedIds.length === 3) {
+				console.log('game over')
+			} else {
+				console.log('you lose')
+			}
+		}
+	}, [matchedIds, timeLeft])
 
 	if (!mounted) return null
 
@@ -107,6 +117,20 @@ export function MatchSection({ isRunning }: Props) {
 			console.log('incorrect')
 		}
 		setActivePackId(null)
+	}
+
+	if (userWon) {
+		return (
+			<div className='flex flex-col items-center justify-center'>
+				<h1 className='text-6xl text-white'>You Win!</h1>
+				<button
+					onClick={() => setUserWon(false)}
+					className='mt-12 rounded bg-red-500 px-4 py-2 text-white'
+				>
+					Play Again
+				</button>
+			</div>
+		)
 	}
 
 	return (

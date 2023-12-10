@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Stopwatch } from '@/components/stopwatch'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MatchSection } from '@/components/match-section'
 
 export default function MatchGame() {
@@ -29,7 +29,7 @@ export default function MatchGame() {
 					setIsRunning={setIsRunning}
 				/>
 			</button>
-			<MatchSection isRunning={isRunning} />
+			<MatchSection isRunning={isRunning} timeLeft={timeLeft} />
 		</div>
 	)
 }
