@@ -21,14 +21,15 @@ export default function MatchGame() {
 			<h2 className='mx-auto max-w-lg pb-16 pt-11 text-3xl text-white'>
 				¡Conecta los sabores correctos con sus cajetillas!
 			</h2>
-			<button onClick={() => setIsRunning(!isRunning)}>Start</button>
-			<Stopwatch
-				isRunning={isRunning}
-				timeLeft={timeLeft}
-				setTimeLeft={setTimeLeft}
-				setIsRunning={setIsRunning}
-			/>
-			<MatchSection />
+			<button onClick={() => setIsRunning(!isRunning)}>
+				<Stopwatch
+					isRunning={isRunning}
+					timeLeft={timeLeft}
+					setTimeLeft={setTimeLeft}
+					setIsRunning={setIsRunning}
+				/>
+			</button>
+			<MatchSection isRunning={isRunning} />
 		</div>
 	)
 }

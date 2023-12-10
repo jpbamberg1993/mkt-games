@@ -53,7 +53,11 @@ function shuffleArray<T>(array: T[]): T[] {
 	return array
 }
 
-export function MatchSection() {
+type Props = {
+	isRunning: boolean
+}
+
+export function MatchSection({ isRunning }: Props) {
 	const [shuffledPacks, setShuffledPacks] = useState<Pack[]>([])
 	const [shuffledButtons, setShuffledButtons] = useState<Button[]>([])
 	const [activePackId, setActivePackId] = useState<number | null>(null)
@@ -75,6 +79,9 @@ export function MatchSection() {
 	if (!mounted) return null
 
 	function packClicked(packId: number) {
+		if (!isRunning) {
+			return
+		}
 		if (activePackId === packId) {
 			setActivePackId(null)
 			return
