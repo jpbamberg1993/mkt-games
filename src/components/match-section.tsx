@@ -2,13 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-
-type Pack = {
-	id: number
-	name: string
-	image: string
-	buttonId: number
-}
+import { Pack } from '@/components/pack'
 
 type Button = {
 	id: number
@@ -64,15 +58,29 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function MatchSection() {
+	const [shuffledPacks, setShuffledPacks] = useState<Pack[]>([])
+	const [shuffledButtons, setShuffledButtons] = useState<Button[]>([])
+	const [activePackId, setActivePackId] = useState<number | null>(null)
 	const [mounted, setMounted] = useState(false)
-	const shuffledPacks = shuffleArray(packs)
-	const shuffledButtons = shuffleArray(buttons)
 
 	useEffect(() => {
+		setShuffledPacks(shuffleArray(packs))
+		setShuffledButtons(shuffleArray(buttons))
 		setMounted(true)
 	}, [])
 
 	if (!mounted) return null
+
+	function packClicked(packId: number) {
+		if (activePackId === packId) {
+			setActivePackId(null)
+			return
+		}
+		if (activePackId) {
+			return
+		}
+		setActivePackId(packId)
+	}
 
 	return (
 		<div className='grid grid-cols-3 pt-12'>
@@ -85,15 +93,12 @@ export function MatchSection() {
 						className='flex flex-col flex-wrap items-center justify-center'
 					>
 						<div className='relative flex h-96 flex-col items-center'>
-							<Image
-								src={pack.image}
-								alt={pack.name}
-								width={540}
-								height={700}
+							<Pack
+								pack={pack}
+								activePackId={activePackId ?? 0}
+								packClicked={packClicked}
+								key={pack.id}
 							/>
-							<h3 className='absolute bottom-0 w-1/2 break-words bg-opacity-50 pt-6 text-3xl text-white'>
-								{pack.name}
-							</h3>
 						</div>
 						<div className='pt-12'>
 							<Image
