@@ -16,4 +16,12 @@
   }
 }
 
-body {}
+@layer components {
+  .rainbow-border {
+    background:
+            linear-gradient(90deg, #14B7C2 0%, #677F3F 29.17%, #E2E137 64.58%, #EC4E63 100%),
+            linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    padding: 3px; /* Adjust the size of the border */
+    display: inline-block; /* Or another display value as needed */
+  }
+}
