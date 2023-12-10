@@ -1,10 +1,6 @@
-'use client'
-
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Pack } from '@/components/pack'
 import { Button, SelectCircles } from '@/components/select-circles'
-import { getActiveImagePath } from '@/lib/image-functions'
 
 const packs: Pack[] = [
 	{
@@ -56,15 +52,15 @@ function shuffleArray<T>(array: T[]): T[] {
 type Props = {
 	isRunning: boolean
 	timeLeft: number
+	setUserWon: (userWon: boolean) => void
 }
 
-export function MatchSection({ isRunning, timeLeft }: Props) {
+export function MatchSection({ isRunning, timeLeft, setUserWon }: Props) {
 	const [shuffledPacks, setShuffledPacks] = useState<Pack[]>([])
 	const [shuffledButtons, setShuffledButtons] = useState<Button[]>([])
 	const [activePackId, setActivePackId] = useState<number | null>(null)
 	const [mounted, setMounted] = useState(false)
 	const [matchedIds, setMatchedIds] = useState<number[]>([])
-	const [userWon, setUserWon] = useState(false)
 
 	useEffect(() => {
 		setShuffledPacks(shuffleArray(packs))
@@ -74,17 +70,17 @@ export function MatchSection({ isRunning, timeLeft }: Props) {
 
 	useEffect(() => {
 		if (matchedIds.length === 3) {
-			console.log('game over')
+			setUserWon(true)
 		}
 
 		if (timeLeft <= 0) {
 			if (matchedIds.length === 3) {
-				console.log('game over')
+				setUserWon(true)
 			} else {
-				console.log('you lose')
+				setUserWon(false)
 			}
 		}
-	}, [matchedIds, timeLeft])
+	}, [matchedIds, timeLeft, setUserWon])
 
 	if (!mounted) return null
 
@@ -117,20 +113,6 @@ export function MatchSection({ isRunning, timeLeft }: Props) {
 			console.log('incorrect')
 		}
 		setActivePackId(null)
-	}
-
-	if (userWon) {
-		return (
-			<div className='flex flex-col items-center justify-center'>
-				<h1 className='text-6xl text-white'>You Win!</h1>
-				<button
-					onClick={() => setUserWon(false)}
-					className='mt-12 rounded bg-red-500 px-4 py-2 text-white'
-				>
-					Play Again
-				</button>
-			</div>
-		)
 	}
 
 	return (
