@@ -7,7 +7,7 @@ type Props = {
 
 export function ResultsMessage({ children }: Props) {
 	return (
-		<div className='relative z-20 flex h-screen flex-col items-center justify-center'>
+		<div className='relative z-20 flex flex-col items-center justify-center pt-80'>
 			<div className='flex flex-col items-center'>
 				<Image
 					src='/marlboro-vista-logo-stacked.svg'
