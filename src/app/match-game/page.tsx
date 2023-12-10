@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Stopwatch } from '@/components/stopwatch'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MatchSection } from '@/components/match-section'
 
 export default function MatchGame() {
