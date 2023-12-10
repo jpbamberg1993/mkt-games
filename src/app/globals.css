@@ -25,3 +25,10 @@
     display: inline-block; /* Or another display value as needed */
   }
 }
+
+@font-face {
+  font-family: 'NeulandGrotesk';
+  src: url('/neuland-grotesk-medium-expanded.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}

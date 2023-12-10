@@ -42,7 +42,10 @@ export default function MatchGame() {
 			<h2 className='mx-auto max-w-lg pb-16 pt-11 text-3xl text-white'>
 				¡Conecta los sabores correctos con sus cajetillas!
 			</h2>
-			<button onClick={() => setIsRunning(!isRunning)}>
+			<button
+				onClick={() => setIsRunning(!isRunning)}
+				className='m-0 border-none bg-none p-0'
+			>
 				<Stopwatch
 					isRunning={isRunning}
 					timeLeft={timeLeft}
