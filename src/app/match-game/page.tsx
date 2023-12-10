@@ -3,10 +3,12 @@
 import Image from 'next/image'
 import { Stopwatch } from '@/components/stopwatch'
 import { useState } from 'react'
+import { MatchSection } from '@/components/match-section'
 
 export default function MatchGame() {
 	const [isRunning, setIsRunning] = useState<boolean>(false)
 	const [timeLeft, setTimeLeft] = useState<number>(10)
+
 	return (
 		<div className='relative z-20 grid justify-items-center pt-24 text-center'>
 			<Image
@@ -26,6 +28,7 @@ export default function MatchGame() {
 				setTimeLeft={setTimeLeft}
 				setIsRunning={setIsRunning}
 			/>
+			<MatchSection />
 		</div>
 	)
 }

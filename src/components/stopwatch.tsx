@@ -1,12 +1,10 @@
-'use client'
-
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 
 type Props = {
 	isRunning: boolean
 	timeLeft: number
 	setTimeLeft: Dispatch<SetStateAction<number>>
-	setIsRunning: Dispatch<SetStateAction<boolean>>
+	setIsRunning: (isRunning: boolean) => void
 }
 
 export function Stopwatch({
