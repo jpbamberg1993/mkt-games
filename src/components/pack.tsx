@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { getActiveImagePath } from '@/lib/image-functions'
 
 export type Pack = {
 	id: number
@@ -12,19 +13,19 @@ type Props = {
 	pack: Pack
 	activePackId: number
 	packClicked: (packId: number) => void
+	matchedIds: number[]
 }
 
-export function Pack({ pack, activePackId, packClicked }: Props) {
+export function Pack({ pack, activePackId, packClicked, matchedIds }: Props) {
 	const [imageUrl, setImageUrl] = useState(pack.image)
 
 	useEffect(() => {
 		let url = pack.image
-		if (activePackId === pack.id) {
-			const imageParts = pack.image.split('.')
-			url = `${imageParts[0]}-active.${imageParts[1]}`
+		if (activePackId === pack.id || matchedIds.includes(pack.id)) {
+			url = getActiveImagePath(pack.image)
 		}
 		setImageUrl(url)
-	}, [activePackId, pack])
+	}, [activePackId, pack, matchedIds])
 
 	return (
 		<>

@@ -3,12 +3,8 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Pack } from '@/components/pack'
-
-type Button = {
-	id: number
-	image: string
-	packId: number
-}
+import { Button, SelectCircles } from '@/components/select-circles'
+import { getActiveImagePath } from '@/lib/image-functions'
 
 const packs: Pack[] = [
 	{
@@ -62,12 +58,19 @@ export function MatchSection() {
 	const [shuffledButtons, setShuffledButtons] = useState<Button[]>([])
 	const [activePackId, setActivePackId] = useState<number | null>(null)
 	const [mounted, setMounted] = useState(false)
+	const [matchedIds, setMatchedIds] = useState<number[]>([])
 
 	useEffect(() => {
 		setShuffledPacks(shuffleArray(packs))
 		setShuffledButtons(shuffleArray(buttons))
 		setMounted(true)
 	}, [])
+
+	useEffect(() => {
+		if (matchedIds.length === 3) {
+			console.log('game over')
+		}
+	}, [matchedIds])
 
 	if (!mounted) return null
 
@@ -80,6 +83,23 @@ export function MatchSection() {
 			return
 		}
 		setActivePackId(packId)
+	}
+
+	function buttonClicked(buttonId: number) {
+		if (!activePackId) {
+			return
+		}
+		const pack = packs.find((p) => p.id === activePackId)
+		if (!pack) {
+			return
+		}
+		if (pack.buttonId === buttonId) {
+			console.log('correct')
+			setMatchedIds([...matchedIds, pack.id])
+		} else {
+			console.log('incorrect')
+		}
+		setActivePackId(null)
 	}
 
 	return (
@@ -97,15 +117,16 @@ export function MatchSection() {
 								pack={pack}
 								activePackId={activePackId ?? 0}
 								packClicked={packClicked}
+								matchedIds={matchedIds}
 								key={pack.id}
 							/>
 						</div>
 						<div className='pt-12'>
-							<Image
-								src={button.image}
-								alt={button.id.toString()}
-								width={111}
-								height={108}
+							<SelectCircles
+								button={button}
+								buttonClicked={buttonClicked}
+								matchedIds={matchedIds}
+								key={button.id}
 							/>
 						</div>
 					</div>
