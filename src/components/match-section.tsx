@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Pack } from '@/components/pack'
 import { Button, SelectCircles } from '@/components/select-circles'
+import { PackSkeleton } from '@/components/pack-skeleton'
 
 const packs: Pack[] = [
 	{
@@ -82,7 +83,15 @@ export function MatchSection({ isRunning, timeLeft, setUserWon }: Props) {
 		}
 	}, [matchedIds, timeLeft, setUserWon])
 
-	if (!mounted) return null
+	if (!mounted) {
+		return (
+			<>
+				<PackSkeleton />
+				<PackSkeleton />
+				<PackSkeleton />
+			</>
+		)
+	}
 
 	function packClicked(packId: number) {
 		if (!isRunning) {

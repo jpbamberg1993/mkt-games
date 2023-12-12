@@ -2,9 +2,10 @@
 
 import Image from 'next/image'
 import { Stopwatch } from '@/components/stopwatch'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { MatchSection } from '@/components/match-section'
 import { ResultsMessage } from '@/components/results-message'
+import { PackSkeleton } from '@/components/pack-skeleton'
 
 export default function MatchGame() {
 	const [isRunning, setIsRunning] = useState<boolean>(false)
@@ -14,7 +15,7 @@ export default function MatchGame() {
 	if (userWon === true) {
 		return (
 			<ResultsMessage>
-				<h2 className='text-6xl'>¡FELICIDADES, GANASTE!</h2>
+				<h2 className='text-5xl'>¡FELICIDADES, GANASTE!</h2>
 			</ResultsMessage>
 		)
 	}

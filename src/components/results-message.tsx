@@ -12,11 +12,11 @@ export function ResultsMessage({ children }: Props) {
 				<Image
 					src='/marlboro-vista-logo-stacked.svg'
 					alt='Marlboro Vista Logo'
-					width={445}
+					width={425}
 					height={133}
 					className='pb-16'
 				/>
-				<div className='rainbow-border w-[567px] rounded-3xl'>
+				<div className='rainbow-border w-[500px] rounded-3xl'>
 					<div className='flex h-72 max-w-full items-center rounded-3xl bg-white text-center'>
 						{children}
 					</div>
