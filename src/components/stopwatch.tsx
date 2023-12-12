@@ -40,7 +40,7 @@ export function Stopwatch({
 	return (
 		<div className='rainbow-border rounded-full'>
 			<div className='w-64 items-center rounded-full bg-white px-3 py-2 font-sans text-5xl'>
-				00:{formattedTimeLeft}
+				{isRunning ? `00:${formattedTimeLeft}` : 'Iniciar'}
 			</div>
 		</div>
 	)
