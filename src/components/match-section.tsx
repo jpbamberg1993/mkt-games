@@ -125,7 +125,7 @@ export function MatchSection({ isRunning, timeLeft, setUserWon }: Props) {
 						key={i}
 						className='flex flex-col flex-wrap items-center justify-center'
 					>
-						<div className='relative flex h-96 flex-col items-center'>
+						<div className='relative flex h-72 flex-col items-center'>
 							<Pack
 								pack={pack}
 								activePackId={activePackId ?? 0}
