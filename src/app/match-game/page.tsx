@@ -24,7 +24,7 @@ export default function MatchGame() {
 			<ResultsMessage>
 				<div>
 					<h4 className='pb-3 text-3xl'>SE ACABÓ EL TIEMPO,</h4>
-					<h2 className='text-5xl leading-[60px]'>¡SUERTE PARA LA PRÓXIMA!!</h2>
+					<h2 className='text-5xl leading-[60px]'>¡SUERTE PARA LA PRÓXIMA!</h2>
 				</div>
 			</ResultsMessage>
 		)
