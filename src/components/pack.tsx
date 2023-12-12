@@ -36,8 +36,10 @@ export function Pack({ pack, activePackId, packClicked, matchedIds }: Props) {
 				height={700}
 				onClick={() => packClicked(pack.id)}
 			/>
-			<h3 className='absolute bottom-0 w-1/2 break-words bg-opacity-50 pt-6 text-2xl text-white'>
+			<h3 className='absolute bottom-0 w-1/2 whitespace-nowrap bg-opacity-50 pt-6 text-2xl text-white'>
 				{pack.name}
+				<br />
+				Fusion
 			</h3>
 		</>
 	)

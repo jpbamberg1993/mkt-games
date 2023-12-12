@@ -31,15 +31,15 @@ export default function MatchGame() {
 	}
 
 	return (
-		<div className='relative z-20 grid justify-items-center pt-24 text-center'>
+		<div className='relative z-20 grid h-[76vh] justify-items-center overflow-y-auto text-center'>
 			<Image
 				src='/marlboro-vista-logo.svg'
 				alt='Marlboro Vista Logo'
 				width={700}
 				height={300}
-				className='mx-auto'
+				className='mx-auto px-3 pt-5'
 			/>
-			<h2 className='mx-auto max-w-lg pb-16 pt-11 text-3xl text-white'>
+			<h2 className='mx-auto max-w-lg pb-1 pt-5 text-3xl text-white'>
 				¡Conecta los sabores correctos con sus cajetillas!
 			</h2>
 			<button

@@ -5,19 +5,19 @@ import { Button, SelectCircles } from '@/components/select-circles'
 const packs: Pack[] = [
 	{
 		id: 1,
-		name: 'Garden Fusion',
+		name: 'Garden',
 		image: '/garden-fusion-box.webp',
 		buttonId: 1,
 	},
 	{
 		id: 2,
-		name: 'Summer Fusion',
+		name: 'Summer',
 		image: '/summer-fusion-box.webp',
 		buttonId: 2,
 	},
 	{
 		id: 3,
-		name: 'Exotic Fusion',
+		name: 'Exotic',
 		image: '/exotic-fusion-box.webp',
 		buttonId: 3,
 	},
@@ -134,7 +134,7 @@ export function MatchSection({ isRunning, timeLeft, setUserWon }: Props) {
 								key={pack.id}
 							/>
 						</div>
-						<div className='pt-12'>
+						<div className='pt-4'>
 							<SelectCircles
 								button={button}
 								buttonClicked={buttonClicked}
