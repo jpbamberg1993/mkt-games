@@ -116,7 +116,7 @@ export function MatchSection({ isRunning, timeLeft, setUserWon }: Props) {
 	}
 
 	return (
-		<div className='grid grid-cols-3 pt-12'>
+		<div className='grid grid-cols-3 pt-5'>
 			{Array.from({ length: 3 }).map((_, i) => {
 				const pack = shuffledPacks[i]
 				const button = shuffledButtons[i]
