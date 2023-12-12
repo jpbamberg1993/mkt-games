@@ -17,7 +17,7 @@ export function ResultsMessage({ children }: Props) {
 					className='pb-16'
 				/>
 				<div className='rainbow-border w-[567px] rounded-3xl'>
-					<div className='flex h-72 max-w-full items-center rounded-3xl bg-white px-10 text-center'>
+					<div className='flex h-72 max-w-full items-center rounded-3xl bg-white text-center'>
 						{children}
 					</div>
 				</div>
