@@ -36,9 +36,9 @@ export default function MatchGame() {
 			<Image
 				src='/marlboro-vista-logo.svg'
 				alt='Marlboro Vista Logo'
-				width={700}
+				width={600}
 				height={300}
-				className='mx-auto px-3 pt-5'
+				className='mx-auto px-10 pt-5'
 			/>
 			<h2 className='mx-auto max-w-lg pb-1 pt-3 text-3xl text-white'>
 				¡Conecta los sabores correctos con sus cajetillas!
