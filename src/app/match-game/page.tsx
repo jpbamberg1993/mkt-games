@@ -9,7 +9,7 @@ import { PackSkeleton } from '@/components/pack-skeleton'
 
 export default function MatchGame() {
 	const [isRunning, setIsRunning] = useState<boolean>(false)
-	const [timeLeft, setTimeLeft] = useState<number>(10)
+	const [timeLeft, setTimeLeft] = useState<number>(30)
 	const [userWon, setUserWon] = useState<boolean | null>(null)
 
 	if (userWon === true) {
